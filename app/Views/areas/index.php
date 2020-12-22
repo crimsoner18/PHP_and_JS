@@ -30,7 +30,7 @@
               ?>
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <a href="/ViewArea/<?= $data['id'] ?>" class="btn text-left area">
+                        <a href="Areas/viewArea/<?= $data['id'] ?>" class="btn text-left area">
                             <div class="card-body">
                                 <h5 class="card-title"><?= esc($data['name']); ?></h5>
                                 <p class="card-subtitle"><?= esc('date registered: '.$data['created_at']); ?></p>

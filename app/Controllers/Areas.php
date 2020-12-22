@@ -24,10 +24,10 @@ class Areas extends BaseController
 		return view('templates/template',$data);
 	}
 
-	public function ViewArea($id = null){
+	public function viewArea($id = null){
 		if(!is_null($id)){
 
-			$data['main'] = 'areas/create';
+			$data['main'] = 'areas/detail';
 			$data['id']		= $id;
 			$data['name'] = $this->area->getAreaName($id);
 
@@ -36,7 +36,6 @@ class Areas extends BaseController
 		else {
 			return redirect('areas','refresh');
 		}
-
 	}
 
 	public function save(){
