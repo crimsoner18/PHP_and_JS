@@ -4,11 +4,11 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="areas/index.html">Manage Contact Tracings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Areas">Manage Contact Tracings</a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>{insert area name}</span>
+                    <span>$name</span>
                 </h6>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a class="nav-link active" href="areas/detail.html">Overview</a></li>
@@ -26,7 +26,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="border-bottom mb-3 pt-3 pb-2 area-title">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h1 class="h2">{insert area name}</h1>
+                    <h1 class="h2">$name</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <a href="areas/edit.html" class="btn btn-sm btn-outline-secondary">Edit area</a>
@@ -58,14 +58,14 @@
                         $db = \Config\Database::connect();
                         $id = $_SESSION['uid'];
 
-                        $query = $db->query('SELECT date FROM `areas` WHERE `user_id`='.$id);
+                        $query = $db->query("SELECT date FROM `tracers` WHERE `area_id`='$id'");
                         foreach ($query->getResult('array') as $data):
                       ?>
                     <tr>
                         <td class="text-nowrap" colspan="3">November 4, 2020</td>
                     </tr>
                     <?php
-                      $query = $db->query('SELECT * FROM `areas` WHERE `user_id`='.$id);
+                      $query = $db->query("SELECT * FROM `tracers` WHERE `user_id`='$id'");
                       foreach ($query->getResult('array') as $data):
                     ?>
                     <tr>

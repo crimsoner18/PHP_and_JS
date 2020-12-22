@@ -11,17 +11,20 @@ class AreaModel extends Model
       $email = $items['email'];
       $pass = $items['password'];
 
-      $query = $this->db->query('SELECT * FROM areas');
+      $query = $this->db->query('SELECT * FROM `areas`');
 
       return($query->getResult('array'));
     }
 
-    public function getVisitors($id){
-      
+    public function getAreaName($id){
+      $query = $this->db->query("SELECT `name` FROM `areas` WHERE id='$id'");
+      $name = '';
+      foreach($query->getResult('array') as $data):
+        $name .= $data['name'];
+      endforeach;
 
-      return $query->getResult('array');
+      return $name;
     }
-
     //--------------------------------------------------------------------
 
 }

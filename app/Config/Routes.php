@@ -35,7 +35,7 @@ $routes->get('Logout', 'Home::logout',['as' => 'logout']);
 
 $routes->get('/Area', 'Areas::index',['as' => 'areas']);
 $routes->get('/newArea', 'Areas::newArea',['as' => 'newArea']);
-$routes->get('/ViewArea', 'Areas::getArea/$1');
+$routes->get('/ViewArea', 'Areas::ViewArea/$1');
 
 $routes->post('/login', 'Home::login');
 $routes->post('/newArea','Areas::save');
