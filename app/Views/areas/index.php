@@ -35,7 +35,16 @@
                                 <h5 class="card-title"><?= esc($data['name']); ?></h5>
                                 <p class="card-subtitle"><?= esc('date registered: '.$data['created_at']); ?></p>
                                 <hr>
-                                <p class="card-text">3,546 unique visitors</p>
+                                <p class="card-text">
+                                  <?php
+                                    $id =  $data['id'];
+                                    $query = $db->query("SELECT COUNT(DISTINCT(user_id)) as visitors FROM tracers inner join users ON tracers.user_id = users.id WHERE tracers.area_id='$id'");
+
+                                    foreach ($query->getResult('array') as $data):
+                                      echo($data['visitors'].' Unique Visitors');
+                                    endforeach;
+                                    ?>
+                              </p>
                             </div>
                         </a>
                     </div>

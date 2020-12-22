@@ -1,30 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Contact Tracing Backend</title>
-
-    <base href="../">
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <!-- Custom styles -->
-    <link href="assets/css/custom.css" rel="stylesheet">
-</head>
-
-<body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="areas/index.html">Contact Tracing Platform</a>
-    <span class="navbar-organizer w-100">{insert user name}</span>
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" id="logout" href="index.html">Sign out</a>
-        </li>
-    </ul>
-</nav>
 
 <div class="container-fluid">
     <div class="row">
@@ -77,47 +50,37 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Person</th>
-                        
+
                     </tr>
                     </thead>
                     <tbody>
+                      <?php
+                        $db = \Config\Database::connect();
+                        $id = $_SESSION['uid'];
+
+                        $query = $db->query('SELECT date FROM `areas` WHERE `user_id`='.$id);
+                        foreach ($query->getResult('array') as $data):
+                      ?>
                     <tr>
                         <td class="text-nowrap" colspan="3">November 4, 2020</td>
                     </tr>
+                    <?php
+                      $query = $db->query('SELECT * FROM `areas` WHERE `user_id`='.$id);
+                      foreach ($query->getResult('array') as $data):
+                    ?>
                     <tr>
                         <td class="text-nowrap"></td>
                         <td class="text-nowrap">08:30</td>
-                        <td>Juan Dela Cruz</td> 
+                        <td>Juan Dela Cruz</td>
                     </tr>
                     <tr class="positive">
                         <td class="text-nowrap"></td>
                         <td class="text-nowrap">10:32</td>
-                        <td><a href="people/details.html">Pepito Manaloto</a></td> 
+                        <td><a href="people/details.html">Pepito Manaloto</a></td>
                     </tr>
-                    <tr>
-                        <td class="text-nowrap"></td>
-                        <td class="text-nowrap">11:43</td>
-                        <td>Captain Barbel</td> 
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap" colspan="3">November 5, 2020</td>
-                    </tr>
-                    <tr class="positive">
-                        <td class="text-nowrap"></td>
-                        <td class="text-nowrap">09:30</td>
-                        <td><a href="people/details.html">Pepito Manaloto</a></td> 
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap"></td>
-                        <td class="text-nowrap">16:21</td>
-                        <td>Captain Barbel</td> 
-                    </tr>
-                    <tr>
-                        <td class="text-nowrap"></td>
-                        <td class="text-nowrap">17:14</td>
-                        <td>Juan Dela Cruz</td> 
-                    </tr>
-                    
+
+
+
                     </tbody>
                 </table>
             </div>
@@ -125,6 +88,3 @@
         </main>
     </div>
 </div>
-
-</body>
-</html>
